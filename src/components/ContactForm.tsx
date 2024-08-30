@@ -103,6 +103,8 @@ const Button = styled.button`
     color: #000;
     transition: .5s;
     cursor: pointer;
+    padding: 10px;
+    border-radius: 2px;
 
   &:hover {
     background-color: #fff;

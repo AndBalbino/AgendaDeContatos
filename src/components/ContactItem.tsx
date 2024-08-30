@@ -69,6 +69,7 @@ const ButtonContainer = styled.div`
   margin-top: 10px;
   display: flex;
   gap: 10px;
+  justify-content: center;
 `;
 
 const Button = styled.button`
