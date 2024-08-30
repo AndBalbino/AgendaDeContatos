@@ -47,22 +47,24 @@ const ContactForm: React.FC<ContactFormProps> = ({ id, name = '', phone = '', em
 
   return (
     <FormContainer>
-      <label>
-        Nome:
-        <input type="text" value={contactName} onChange={(e) => setContactName(e.target.value)} />
-      </label>
-      <label>
-        Telefone:
-        <InputMask
-          mask="(99) 99999-9999"
-          value={contactPhone}
-          onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setContactPhone(e.target.value)}
-        />
-      </label>
-      <label>
-        Email:
-        <input type="email" value={contactEmail} onChange={(e) => setContactEmail(e.target.value)} />
-      </label>
+        <InputContainer>
+            <label htmlFor="title">Nome:</label>
+            <input type="text" name='title' placeholder='Nome do contato' value={contactName} onChange={(e) => setContactName(e.target.value)} />
+        </InputContainer>
+        <InputContainer>
+            <label htmlFor="email">E-mail:</label>
+            <input type="email" name='email' placeholder='E-mail do contato' value={contactEmail} onChange={(e) => setContactEmail(e.target.value)} />
+        </InputContainer>
+        <InputContainer>
+            <label htmlFor="phoneNumber">Número do contato:</label>
+            <InputMask
+              mask="(99) 99999-9999"
+              placeholder='Número de telefone'
+              name='phoneNumber'
+              value={contactPhone}
+              onChange={(e: { target: { value: React.SetStateAction<string>; }; }) => setContactPhone(e.target.value)}
+            />
+        </InputContainer>
       <Button onClick={handleSubmit}>{id ? 'Editar' : 'Adicionar'} Contato</Button>
     </FormContainer>
   );
@@ -71,21 +73,39 @@ const ContactForm: React.FC<ContactFormProps> = ({ id, name = '', phone = '', em
 export default ContactForm;
 
 const FormContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+     display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+`;
+
+const InputContainer = styled.div`
+display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    label{
+        font-weight: bold;
+    margin-bottom: .4em;
+    }
+
+    input{
+        padding: 8px 15px;
+    margin-bottom: 1.5em;
+    border-radius: 0;
+    border: 1px solid #282c34;
+    }
 `;
 
 const Button = styled.button`
-  background-color: #007bff;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  background-color: #61dafb;
+    border: 1px solid #61dafb;
+    color: #000;
+    transition: .5s;
+    cursor: pointer;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: #fff;
+    border-color: #282c34;
   }
 `;
